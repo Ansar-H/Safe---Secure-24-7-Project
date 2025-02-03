@@ -94,12 +94,12 @@
     position: relative;
   }
   #hero-1351 .cs-text {
-    font-size: 1.25rem;
+    font-size: 1.1875rem;
     line-height: 1.5em;
     text-align: inherit;
     width: 100%;
     /* 464px - 622px */
-    max-width: clamp(29rem, 60vw, 38.785rem);
+    max-width: clamp(25rem, 60vw, 38.785rem);
     margin: 0 0 2.5rem 0;
     color: #e8e8e8;
   }
