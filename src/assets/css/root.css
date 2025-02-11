@@ -5,10 +5,10 @@
 /* CodeStitch Root and Helpers */
 @media only screen and (min-width: 0rem) {
   :root {
-    --primary: #43b7ff;
-    --primaryLight: #43b7ff;
-    --secondary: #001f3f;
-    --secondaryLight: #001f3f;
+    --primary: #e12213;
+    --primaryLight: #ffba43;
+    --secondary: #e12213;
+    --secondaryLight: #ffba43;
     --headerColor: #1a1a1a;
     --bodyTextColor: #4e4b66;
     --bodyTextColorWhite: #fafbfc;
@@ -20,35 +20,45 @@
     /* 60px - 100px top and bottom */
     --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
   }
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  *,
+  *:before,
+  *:after {
+    /* prevents padding from affecting height and width */
+    box-sizing: border-box;
+  }
   .cs-topper {
-    display: block;
-    margin-bottom: 0.25rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
     font-size: var(--topperFontSize);
     line-height: 1.2em;
+    text-transform: uppercase;
+    text-align: inherit;
+    letter-spacing: 0.1em;
     font-weight: 700;
     color: var(--primary);
-    text-align: inherit;
+    margin-bottom: 0.25rem;
+    display: block;
   }
   .cs-title {
-    position: relative;
-    margin: 0 0 1rem 0;
-    max-width: 43.75rem;
     font-size: var(--headerFontSize);
-    line-height: 1.2em;
     font-weight: 900;
-    color: var(--headerColor);
+    line-height: 1.2em;
     text-align: inherit;
+    max-width: 43.75rem;
+    margin: 0 0 1rem 0;
+    color: var(--headerColor);
+    position: relative;
   }
   .cs-text {
-    margin: 0;
-    max-width: 40.625rem;
-    width: 100%;
     font-size: var(--bodyFontSize);
     line-height: 1.5em;
-    color: var(--bodyTextColor);
     text-align: inherit;
+    width: 100%;
+    max-width: 40.625rem;
+    margin: 0;
+    color: var(--bodyTextColor);
   }
   .cs-text-footer {
     margin: 0;
@@ -68,7 +78,6 @@
     margin: 0;
     color: #fff;
     padding: 0 3rem;
-    border-radius: 30px;
     background-color: var(--primary);
     display: inline-block;
     position: relative;
@@ -96,15 +105,14 @@
   }
   .cs-button-solid-dark {
     font-size: 1rem;
-    line-height: 3.5rem;
+    line-height: 3.75rem;
     text-decoration: none;
     font-weight: 700;
     overflow: hidden;
     margin: 0 auto;
     margin-bottom: clamp(1.5rem, 4vw, 2rem);
     color: #fff;
-    padding: 0 3rem;
-    border-radius: 1.875rem;
+    padding: 0 4.375rem;
     background-color: var(--primary);
     display: block;
     width: fit-content;
@@ -139,7 +147,6 @@
     margin: 0;
     color: #fff;
     padding: 0 3rem;
-    border-radius: 30px;
     background-color: var(--primary);
     display: inline-block;
     z-index: 1;
@@ -189,7 +196,6 @@
     font-weight: 700;
     margin: 0;
     padding: 0 3rem;
-    border-radius: 30px;
     background-color: var(--primary);
     display: inline-block;
     z-index: 1;
@@ -353,86 +359,93 @@
 /*-- -------------------------- -->
 <---     Mobile Navigation      -->
 <--- -------------------------- -*/
+body,
+html {
+  /* reset margin and padding so there's no gap between the nav and the screen edges */
+  margin: 0;
+  padding: 0;
+}
 /* Mobile - 1023px */
 @media only screen and (max-width: 63.9375rem) {
   body.cs-open {
     overflow: hidden;
   }
-  body.scroll #cs-navigation {
+  body.cs-open #cs-navigation:after {
     width: 100%;
-    max-width: 100%;
-    top: 0;
+    opacity: 1;
   }
-  body.scroll #cs-navigation:before {
-    border-radius: 0;
-  }
-  body.scroll #cs-navigation .cs-ul-wrapper {
-    top: 100%;
+  body.scroll #cs-navigation:after {
+    width: 100%;
   }
   #cs-navigation {
-    width: 94%;
-    max-width: 80rem;
-    /* prevents padding from affecting height and width */
+    width: 100%;
+    /* prevents padding and border from affecting height and width */
     box-sizing: border-box;
-    /* 12px - 24px */
-    padding: clamp(0.75rem, 2vw, 1.5rem);
-    /* 12px - 24px */
-    border-radius: clamp(0.75rem, 2vw, 1.5rem);
+    border-bottom: 1px solid #484848;
     position: fixed;
-    top: 2rem;
-    left: 50%;
     z-index: 10000;
-    transform: translateX(-50%);
-    transition: top 0.3s, border-radius 0.3s, width 0.3s, max-width 0.3s;
   }
   #cs-navigation:before {
-    /* background color */
+    /* mobile nav overlay on open */
     content: "";
-    width: 100%;
-    height: 100%;
-    background: #fff;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    opacity: 1;
-    /* 12px - 24px */
-    border-radius: clamp(0.75rem, 2vw, 1.5rem);
-    display: block;
+    width: 0%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    opacity: 0;
     position: absolute;
+    display: block;
+    top: 100%;
+    right: 0;
+    z-index: -11;
+    transition: width 0.5s, opacity 0.3s;
+  }
+  #cs-navigation:after {
+    /* on scroll overlay */
+    content: "";
+    width: 0%;
+    height: 100%;
+    background: #1a1a1a;
+    opacity: 0.8;
+    position: absolute;
+    display: block;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: transform 0.2s, border-radius 0.3s ease-in-out;
+    left: 0;
+    z-index: -1;
+    transition: width 0.3s, opacity 0.3s;
   }
   #cs-navigation.cs-active:before {
-    transform: translateX(-50%) scale(1.03);
-  }
-  #cs-navigation.cs-active .cs-toggle {
-    transform: rotate(180deg);
+    width: 100%;
+    opacity: 1;
   }
   #cs-navigation.cs-active .cs-ul-wrapper {
-    transform: scaleY(1);
-    transition-delay: 0.15s;
+    opacity: 1;
+    transform: scaleX(1);
+    transition-delay: 0.2s;
   }
   #cs-navigation.cs-active .cs-li {
+    transform: translateX(0);
     opacity: 1;
-    transform: translateY(0);
   }
   #cs-navigation .cs-container {
     width: 100%;
+    padding: 1rem;
+    /* prevents padding and border from affecting height and width */
+    box-sizing: border-box;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 1.5rem;
   }
   #cs-navigation .cs-logo {
-    width: auto;
-    max-width: 12.5rem;
-    height: 100%;
+    width: 9.1875rem;
+    height: auto;
     margin: 0 auto 0 0;
-    /* prevents padding from affecting height and width */
-    box-sizing: border-box;
     padding: 0;
+    /* prevents padding and border from affecting height and width */
+    box-sizing: border-box;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     z-index: 10;
   }
@@ -441,49 +454,18 @@
     height: 100%;
     /* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
     object-fit: contain;
+    /* places the image to the left edge of the parent */
+    object-position: left;
   }
   #cs-navigation .cs-toggle {
     width: 3.5rem;
     height: 3.5rem;
     margin: 0 0 0 auto;
-    background-color: #1a1a1a;
+    background-color: #484848;
     border: none;
-    border-radius: 0.25rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    z-index: 10;
-    transition: transform 0.6s;
-  }
-  #cs-navigation .cs-nav {
-    /* sends it to the right in the 3rd position */
-    order: 3;
-  }
-  #cs-navigation .cs-contact-group {
-    display: none;
-    position: relative;
-    z-index: 10;
-  }
-  #cs-navigation .cs-phone {
-    font-size: 1rem;
-    line-height: 1.5em;
-    text-decoration: none;
-    margin: 0;
-    color: var(--headerColor);
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 0.5rem;
-    transition: opacity 0.3s, color 0.3s;
-  }
-  #cs-navigation .cs-phone-icon {
-    width: 1.5rem;
-    height: auto;
-    display: block;
-  }
-  #cs-navigation .cs-social {
-    display: none;
   }
   #cs-navigation .cs-active .cs-line1 {
     top: 50%;
@@ -491,12 +473,12 @@
   }
   #cs-navigation .cs-active .cs-line2 {
     top: 50%;
-    transform: translate(-50%, -50%) translateY(0) rotate(-225deg);
     transform-origin: center;
+    transform: translate(-50%, -50%) translateY(0) rotate(-225deg);
   }
   #cs-navigation .cs-active .cs-line3 {
-    opacity: 0;
     bottom: 100%;
+    opacity: 0;
   }
   #cs-navigation .cs-box {
     /* 24px - 28px */
@@ -507,20 +489,20 @@
   #cs-navigation .cs-line {
     width: 100%;
     height: 2px;
-    background-color: #fafbfc;
     border-radius: 2px;
+    background-color: #fafbfc;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
   }
   #cs-navigation .cs-line1 {
     top: 0;
+    transform-origin: center;
     transition: transform 0.5s, top 0.3s, left 0.3s;
     animation-duration: 0.7s;
     animation-timing-function: ease;
-    animation-direction: normal;
     animation-fill-mode: forwards;
-    transform-origin: center;
+    animation-direction: normal;
   }
   #cs-navigation .cs-line2 {
     top: 50%;
@@ -528,49 +510,51 @@
     transition: top 0.3s, left 0.3s, transform 0.5s;
     animation-duration: 0.7s;
     animation-timing-function: ease;
-    animation-direction: normal;
     animation-fill-mode: forwards;
+    animation-direction: normal;
   }
   #cs-navigation .cs-line3 {
     bottom: 0;
     transition: bottom 0.3s, opacity 0.3s;
   }
   #cs-navigation .cs-ul-wrapper {
-    width: 100%;
-    height: auto;
-    padding-bottom: 2.4em;
-    background-color: #fff;
-    border-radius: 0 0 1.5rem 1.5rem;
-    position: absolute;
-    top: 85%;
-    left: 0;
-    z-index: -1;
+    min-width: 70vw;
+    height: 100vh;
+    opacity: 0;
+    background-color: #1a1a1a;
+    box-shadow: inset rgba(0, 0, 0, 0.2) 0px 8px 24px;
     overflow: hidden;
-    transform: scaleY(0);
-    transition: transform 0.4s;
-    transform-origin: top;
+    position: absolute;
+    top: 100%;
+    left: auto;
+    right: 0;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: top right;
+    transition: transform 0.4s, opacity 0.3s;
   }
   #cs-navigation .cs-ul {
-    width: 100%;
-    height: auto;
-    max-height: 65vh;
     margin: 0;
-    padding: 4rem 0 0 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 1.25rem;
+    /* 28px - 40px */
+    padding: 3rem clamp(1.75rem, 3vw, 2.5rem) 2rem 4.375rem;
+    width: auto;
+    min-width: 40%;
+    height: 65vh;
     overflow: scroll;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1.25rem;
   }
   #cs-navigation .cs-li {
-    text-align: center;
+    text-align: right;
     list-style: none;
     width: 100%;
     margin-right: 0;
-    opacity: 0;
     /* transition from these values */
-    transform: translateY(-70/16rem);
+    transform: translateX(-2.5rem);
+    opacity: 0;
     transition: transform 0.6s, opacity 0.9s;
   }
   #cs-navigation .cs-li:nth-of-type(1) {
@@ -600,43 +584,36 @@
   #cs-navigation .cs-li:nth-of-type(9) {
     transition-delay: 0.45s;
   }
-  #cs-navigation .cs-li:nth-of-type(10) {
-    transition-delay: 0.5s;
-  }
-  #cs-navigation .cs-li:nth-of-type(11) {
-    transition-delay: 0.55s;
-  }
-  #cs-navigation .cs-li:nth-of-type(12) {
-    transition-delay: 0.6s;
-  }
-  #cs-navigation .cs-li:nth-of-type(13) {
-    transition-delay: 0.65s;
-  }
   #cs-navigation .cs-li-link {
     /* 16px - 24px */
     font-size: clamp(1rem, 2.5vw, 1.5rem);
     line-height: 1.2em;
     text-decoration: none;
     margin: 0;
-    color: var(--headerColor);
+    color: var(--bodyTextColorWhite);
     display: inline-block;
     position: relative;
   }
-  #cs-navigation .cs-li-link.cs-active {
-    color: var(--primary);
-  }
-  #cs-navigation .cs-li-link:hover {
-    color: var(--primary);
-  }
-  #cs-navigation .cs-button-solid-dark {
+  #cs-navigation .cs-li-link:before {
+    /* active state underline */
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    opacity: 1;
+    position: absolute;
     display: none;
-    /* Hides the button on mobile */
+    bottom: -0.125rem;
+    left: 0;
   }
-}
-/* Tablet - 768px */
-@media only screen and (min-width: 48rem) {
-  #cs-navigation .cs-contact-group {
+  #cs-navigation .cs-li-link.cs-active {
+    color: var(--secondary);
+  }
+  #cs-navigation .cs-li-link.cs-active:before {
     display: block;
+  }
+  #cs-navigation .cs-button-solid {
+    display: none;
   }
 }
 /*-- -------------------------- -->
@@ -644,137 +621,77 @@
 <--- -------------------------- -*/
 /* Small Desktop - 1024px */
 @media only screen and (min-width: 64rem) {
-  body.scroll #cs-navigation {
-    width: 100%;
-    max-width: 100%;
-    border-radius: 0;
-    top: 0;
+  body.scroll #cs-navigation:after {
+    height: 100%;
   }
   #cs-navigation {
-    width: 94%;
-    max-width: 90rem;
-    height: 6rem;
-    /* prevents padding from affecting height and width */
+    width: 100%;
+    padding: 0;
+    /* prevents padding and border from affecting height and width */
     box-sizing: border-box;
-    /* 12px - 24px */
-    padding: clamp(0.75rem, 2vw, 1.5rem) 0;
-    background-color: #fff;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    /* 12px - 24px */
-    border-radius: clamp(0.75rem, 2vw, 1.5rem);
-    display: flex;
-    align-items: center;
+    border: 1px solid #484848;
     position: fixed;
-    top: 2rem;
-    left: 50%;
     z-index: 10000;
-    transform: translateX(-50%);
-    transition: top 0.3s, border-radius 0.3s, width 0.3s, max-width 0.3s;
+  }
+  #cs-navigation:after {
+    /* on scroll overlay */
+    content: "";
+    width: 100%;
+    height: 0%;
+    background: #1a1a1a;
+    opacity: 0.8;
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: height 0.3s, opacity 0.3s;
   }
   #cs-navigation .cs-container {
     width: 100%;
-    max-width: 90rem;
+    /* same height as the cs-ul-wrapper */
+    height: 5.8125rem;
+    max-width: 80rem;
     margin: auto;
-    /* prevents padding from affecting height and width */
+    padding: 0 1rem;
+    /* prevents padding from affectin gheight */
     box-sizing: border-box;
-    padding: 0 1.5rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     gap: 1.5rem;
+    position: relative;
   }
   #cs-navigation .cs-toggle {
     display: none;
   }
   #cs-navigation .cs-logo {
     width: 18.4%;
-    max-width: 21.875rem;
-    height: 2rem;
+    max-width: 12.3125rem;
+    height: 3.75rem;
     /* margin-right auto pushes everything away from it to the right */
     margin: 0 auto 0 0;
     padding: 0;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     z-index: 100;
   }
   #cs-navigation .cs-logo img {
-    width: auto;
+    width: 100%;
     height: 100%;
     /* ensures the image never overflows the container. It stays contained within it's width and height and expands to fill it then stops once it reaches an edge */
     object-fit: contain;
   }
-  #cs-navigation .cs-contact-group {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-  }
-  #cs-navigation .cs-phone {
-    font-size: 1rem;
-    line-height: 1.5em;
-    text-decoration: none;
-    margin: 0;
-    color: var(--headerColor);
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 0.5rem;
-    transition: opacity 0.3s, color 0.3s;
-  }
-  #cs-navigation .cs-phone-icon {
-    width: 1.5rem;
-    height: auto;
-    display: block;
-  }
-  #cs-navigation .cs-social {
-    height: 2rem;
-    opacity: 1;
-    display: none;
-    visibility: visible;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    transition: opacity 0.3s, visibility 0.3s, height 0.3s;
-  }
-  #cs-navigation .cs-social-link {
-    text-decoration: none;
-    width: 2rem;
-    height: 2rem;
-    background-color: #f7f7f7;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.3s;
-  }
-  #cs-navigation .cs-social-link:hover {
-    background-color: var(--primary);
-  }
-  #cs-navigation .cs-social-link:hover .cs-social-icon {
-    opacity: 1;
-    filter: grayscale(1) brightness(10000%);
-  }
-  #cs-navigation .cs-social-icon {
-    width: 0.75rem;
-    height: auto;
-    opacity: 0.6;
-    display: block;
-    transition: opacity 0.3s;
-  }
   #cs-navigation .cs-ul-wrapper {
-    height: 100%;
-    display: flex;
-    align-items: center;
     /* absolutely positioned to be dead center */
     position: absolute;
-    top: 50%;
     left: 50%;
+    top: 50%;
     transform: translate(-50%, -50%);
   }
   #cs-navigation .cs-ul {
     width: 100%;
-    height: 100%;
     margin: 0;
     padding: 0;
     display: flex;
@@ -785,35 +702,64 @@
   }
   #cs-navigation .cs-li {
     list-style: none;
-    height: 100%;
-    padding: 0;
-    display: flex;
-    align-items: center;
+    padding: 2.25rem 0;
     /* prevent flexbox from squishing it */
     flex: none;
   }
   #cs-navigation .cs-li-link {
-    font-size: 1rem;
+    /* 14px - 16px */
+    font-size: clamp(0.875rem, 0.6vw, 1rem);
     line-height: 1.5em;
     text-decoration: none;
     margin: 0;
-    color: var(--headerColor);
+    color: var(--bodyTextColorWhite);
     display: block;
     position: relative;
     transition: color 0.3s;
   }
+  #cs-navigation .cs-li-link:before {
+    content: "";
+    width: 0%;
+    height: 1px;
+    background: currentColor;
+    opacity: 1;
+    position: absolute;
+    display: block;
+    bottom: -2px;
+    left: 0;
+    transition: width 0.3s;
+  }
   #cs-navigation .cs-li-link:hover {
-    color: var(--primary);
+    color: var(--secondary);
+  }
+  #cs-navigation .cs-li-link:hover:before {
+    width: 100%;
   }
   #cs-navigation .cs-li-link.cs-active {
-    color: var(--primary);
+    color: var(--secondary);
+  }
+  #cs-navigation .cs-li-link.cs-active:before {
+    width: 100%;
+  }
+  #cs-navigation .cs-nav-button {
+    line-height: 2.875rem;
   }
 }
-/* Large Desktop - 1300px */
-@media only screen and (min-width: 81.25rem) {
-  #cs-navigation .cs-social {
-    display: flex;
-  }
+body.contact-page #cs-navigation::after {
+  /* Force it to show right away instead of starting at 0% */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  /* Opaque dark background */
+  background: #1a1a1a !important;
+  opacity: 0.8 !important;
+  /* If needed, get it on top or behind nav links. Typically -1 or 0. */
+  z-index: -1;
+  /* Disable or override any transitions from above if you like */
+  transition: none !important;
 }
 /*-- -------------------------- -->
 <---          Footer            -->
@@ -932,7 +878,7 @@
     transition: color 0.3s;
   }
   #cs-footer-842 .cs-link:hover {
-    color: var(--primaryLight);
+    color: var(--primary);
   }
   #cs-footer-842 .cs-icon {
     width: 1.25rem;
