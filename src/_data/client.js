@@ -1,8 +1,8 @@
 module.exports = {
   name: "Noble Autos",
-  email: "email@gmail.com",
-  phoneForTel: "44-1234-567-890",
-  phoneFormatted: "(44) 1234-567890",
+  email: "NobleAutosLtd@outlook.com",
+  phoneForTel: "44-7907-186-240",
+  phoneFormatted: "(44) 7907-186240",
   address: {
     city: "Bristol",
     country: "UK",
