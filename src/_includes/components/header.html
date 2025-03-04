@@ -7,10 +7,10 @@
     <!--Nav Logo-->
     <a href="/" class="cs-logo" aria-label="back to home">
       <img
-        src="/assets/images/Noble-Autos-Logo.webp"
+        src="/assets/images/southwest-prestige-hire-logo.png"
         alt="logo"
-        width="197"
-        height="43"
+        width="300"
+        height="40"
         aria-hidden="true"
         decoding="async"
       />
@@ -25,7 +25,6 @@
           <span class="cs-line cs-line3" aria-hidden="true"></span>
         </div>
       </button>
-      <!-- We need a wrapper div so we can set a fixed height on the cs-ul in case the nav list gets too long from too many dropdowns being opened and needs to have an overflow scroll. This wrapper acts as the background so it can go the full height of the screen and not cut off any overflowing nav items while the cs-ul stops short of the bottom of the screen, which keeps all nav items in view no matter how mnay there are-->
       <div class="cs-ul-wrapper">
         <ul id="cs-expanded" class="cs-ul" aria-expanded="false">
           <li class="cs-li">
@@ -38,26 +37,26 @@
           </li>
           <li class="cs-li">
             <a
-              href="/about/"
+              href="/about"
               class="cs-li-link {{ 'cs-active' if 'about' == page.fileSlug }}"
             >
-              About
+              About Us
             </a>
           </li>
           <li class="cs-li">
             <a
-              href="/services/"
-              class="cs-li-link {{ 'cs-active' if 'services' == page.fileSlug }}"
+              href="/our-fleet"
+              class="cs-li-link {{ 'cs-active' if 'our-fleet' == page.fileSlug }}"
             >
-              Services
+              Our Fleet
             </a>
           </li>
           <li class="cs-li">
             <a
-              href="/contact/"
+              href="/contact"
               class="cs-li-link {{ 'cs-active' if 'contact' == page.fileSlug }}"
             >
-              Contact
+              Contact Us
             </a>
           </li>
         </ul>

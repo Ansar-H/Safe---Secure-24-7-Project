@@ -1,7 +1,7 @@
 ---
 title: "Noble Autos | Mobile Vehicle Customisation & Repairs Bristol"
 description: "Bristol's mobile automotive specialists offering professional vehicle customisation, repairs, and maintenance at your location. Fully qualified technicians for body kits, coding, and servicing."
-preloadImg: "/assets/images/BMW-Interior-Homepage.webp"
+preloadImg: "/assets/images/homepage-hero-image.jpg"
 permalink: "/"
 tags: "sitemap" # Sitemap will use all pages in content/, due to content.json. As index.html is not included in content/ we need to manually add the sitemap tag to this page (only).
 eleventyNavigation:
@@ -12,6 +12,8 @@ eleventyNavigation:
 {% extends "layouts/base.html" %} {% block head %}
 <link rel="stylesheet" href="/assets/css/local.css" />
 <link rel="stylesheet" href="/assets/css/critical.css" />
+<!-- Add AOS CSS - this was missing -->
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 <!-- Script for Netlify Identity -->
 <script
@@ -28,6 +30,19 @@ eleventyNavigation:
       }
     });
   }
+</script>
+
+<!-- Add AOS JS -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  // Initialize AOS
+  document.addEventListener("DOMContentLoaded", function () {
+    AOS.init({
+      duration: 800,
+      easing: "ease-out",
+      once: true,
+    });
+  });
 </script>
 
 <!-- JSON Schema Markup -->
@@ -73,604 +88,195 @@ eleventyNavigation:
 <!--                    Hero                      -->
 <!-- ============================================ -->
 
-<section id="hero-1060">
+<section id="hero-1295">
   <div class="cs-container">
     <div class="cs-content">
-      <h1 class="cs-title">Noble Autos</h1>
-      <p class="cs-text">
-        We are Bristol’s mobile automotive specialists offering vehicle
-        customisation, repairs, and maintenance at your convenience - whether at
-        home, work, or anywhere you choose.
-      </p>
-      <a href="/contact" class="cs-button-solid">Book Mobile Service</a>
+      <img
+        class="cs-crown"
+        src="/assets/images/crown-image2.png"
+        alt="Crown icon"
+        width="150"
+        height="150"
+      />
+      <h1 class="cs-title">Southwest Prestige Hire</h1>
+      <p class="cs-text">Vehicle Hire & Chauffeur Services Across the UK</p>
+      <a href="/contact" class="cs-button-solid">Find A Car</a>
     </div>
-    <ul class="cs-card-group">
-      <li class="cs-item">
-        <picture class="cs-icon-wrapper">
-          <img
-            class="cs-icon"
-            loading="lazy"
-            decoding="async"
-            src="/assets/svgs/location.svg"
-            alt="car"
-            width="48"
-            height="48"
-          />
-        </picture>
-        <h3 class="cs-h3">We Come To You</h3>
-        <p class="cs-item-text">
-          Choose when and where you want your service - at home, work, or
-          anywhere convenient.
-        </p>
-      </li>
-      <li class="cs-item">
-        <picture class="cs-icon-wrapper">
-          <img
-            class="cs-icon"
-            loading="lazy"
-            decoding="async"
-            src="/assets/svgs/shield.svg"
-            alt="car"
-            width="48"
-            height="48"
-          />
-        </picture>
-        <h3 class="cs-h3">Fully Qualified</h3>
-        <p class="cs-item-text">
-          Level 3 certified technician with EV and Gas handling qualifications.
-        </p>
-      </li>
-      <li class="cs-item">
-        <picture class="cs-icon-wrapper">
-          <img
-            class="cs-icon"
-            loading="lazy"
-            decoding="async"
-            src="/assets/svgs/clock.svg"
-            alt="car"
-            width="48"
-            height="48"
-          />
-        </picture>
-        <h3 class="cs-h3">Experienced</h3>
-        <p class="cs-item-text">
-          4 years of expertise with over 500 vehicles serviced.
-        </p>
-      </li>
-    </ul>
   </div>
 
-  <!-- Background Image, there's a background image in the CSS for the parallax effect you'll need to change as well if you swap out our images -->
+  <!--Background Image, background image added in CSS at 1600px wide for parallax effect-->
   <picture class="cs-background">
+    <!--Mobile Image-->
     <source
-      media="(max-width: 600px)"
-      srcset="/assets/images/BMW-Interior-Homepage.webp"
+      media="(max-width: 1023px)"
+      srcset="/assets/images/homepage-hero-image.jpg"
     />
+    <!--Tablet and above Image-->
     <source
-      media="(min-width: 601px)"
-      srcset="/assets/images/BMW-Interior-Homepage.webp"
+      media="(min-width: 1024px)"
+      srcset="/assets/images/homepage-hero-image.jpg"
     />
     <img
+      loading="lazy"
       decoding="async"
-      src="/assets/images/BMW-Interior-Homepage.webp"
-      alt="mechanic"
-      width="2250"
-      height="1500"
-      aria-hidden="true"
+      src="/assets/images/homepage-hero-image.jpg"
+      alt="buildings"
+      width="1280"
+      height="568"
     />
   </picture>
 </section>
 
 <!-- ============================================ -->
-<!--                    Services                  -->
+<!--             Side By Side Reverse             -->
 <!-- ============================================ -->
 
-<section id="services-1338">
+<section id="sbs-r-870">
   <div class="cs-container">
-    <div class="cs-content">
-      <span class="cs-topper">Our Services</span>
-      <h2 class="cs-title">Transform Your Vehicle</h2>
+    <picture class="cs-picture" data-aos="fade-left" data-aos-delay="200">
+      <!--Mobile Image-->
+      <source
+        media="(max-width: 600px)"
+        srcset="/assets/images/lamborghini-urus-front.jpg"
+      />
+      <!--Tablet and above Image-->
+      <source
+        media="(min-width: 601px)"
+        srcset="/assets/images/lamborghini-urus-front.jpg"
+      />
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/assets/images/lamborghini-urus-front.jpg"
+        alt="therapy"
+        width="630"
+        height="775"
+      />
+    </picture>
+    <div class="cs-content" data-aos="fade-right" data-aos-delay="200">
+      <span class="cs-topper">Luxury Vehicle Hire</span>
+      <h2 class="cs-title">Daily, Weekly & Weekend Hire</h2>
       <p class="cs-text">
-        From custom body kits to advanced vehicle coding, we provide
-        comprehensive automotive services at your preferred location across
-        Bristol.
-      </p>
-    </div>
-    <ul class="cs-card-group">
-      <li class="cs-item">
-        <a
-          href="https://www.instagram.com/noble.autos/p/C51lntRoq5i/?img_index=1"
-          class="cs-link"
-        >
-          <span class="cs-number">01</span>
-          <picture class="cs-picture">
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/body-kit.webp"
-            />
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/body-kit.webp"
-            />
-            <img
-              decoding="async"
-              src="/assets/images/body-kit.webp"
-              alt="finance"
-              width="413"
-              height="374"
-              aria-hidden="true"
-            />
-          </picture>
-          <div class="cs-info">
-            <h3 class="cs-h3">Body Kits</h3>
-            <p class="cs-item-text">
-              Professional installation and customisation of body kits to
-              transform your vehicle’s appearance.
-            </p>
-          </div>
-        </a>
-      </li>
-      <li class="cs-item">
-        <a
-          href="https://www.instagram.com/noble.autos/p/C_bHuRLo4Su/?img_index=1"
-          class="cs-link"
-        >
-          <span class="cs-number">02</span>
-          <picture class="cs-picture">
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/ambient-lighting.webp"
-            />
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/ambient-lighting.webp"
-            />
-            <img
-              decoding="async"
-              src="/assets/images/ambient-lighting.webp"
-              alt="finance"
-              width="413"
-              height="374"
-              aria-hidden="true"
-            />
-          </picture>
-          <div class="cs-info">
-            <h3 class="cs-h3">Ambient Lighting</h3>
-            <p class="cs-item-text">
-              Custom interior lighting solutions to enhance your driving
-              experience.
-            </p>
-          </div>
-        </a>
-      </li>
-      <li class="cs-item">
-        <a
-          href="https://www.instagram.com/noble.autos/p/C4vZ1HWIoOf/"
-          class="cs-link"
-        >
-          <span class="cs-number">03</span>
-          <picture class="cs-picture">
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/carplay-retrofit.webp"
-            />
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/carplay-retrofit.webp"
-            />
-            <img
-              decoding="async"
-              src="/assets/images/carplay-retrofit.webp"
-              alt="finance"
-              width="413"
-              height="374"
-              aria-hidden="true"
-            />
-          </picture>
-          <div class="cs-info">
-            <h3 class="cs-h3">Vehicle Coding & Retrofits</h3>
-            <p class="cs-item-text">
-              Expert vehicle coding and retrofit services for modern features
-              and upgrades.
-            </p>
-          </div>
-        </a>
-      </li>
-      <li class="cs-item">
-        <a
-          href="https://www.instagram.com/noble.autos/p/Cuh2t-DNlGC/?img_index=1"
-          class="cs-link"
-        >
-          <span class="cs-number">04</span>
-          <picture class="cs-picture">
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/car-repair.webp"
-            />
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/car-repair.webp"
-            />
-            <img
-              decoding="async"
-              src="/assets/images/car-repair.webp"
-              alt="finance"
-              width="413"
-              height="374"
-              aria-hidden="true"
-            />
-          </picture>
-          <div class="cs-info">
-            <h3 class="cs-h3">Maintenance & Repair</h3>
-            <p class="cs-item-text">
-              Comprehensive vehicle maintenance and repair services at your
-              location
-            </p>
-          </div>
-        </a>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<!-- ============================================ -->
-<!--                Side By Side                  -->
-<!-- ============================================ -->
-
-<section id="sbsr-1190">
-  <div class="cs-container">
-    <div class="cs-image-group">
-      <!--Stat Group-->
-      <div class="cs-stat">
-        <picture class="cs-icon-wrapper">
-          <img
-            class="cs-icon"
-            loading="lazy"
-            decoding="async"
-            src="/assets/svgs/3-star.svg"
-            alt="icon"
-            width="48"
-            height="48"
-            aria-hidden="true"
-          />
-        </picture>
-        <div class="cs-flex">
-          <span class="cs-number">500+</span>
-          <span class="cs-desc">Vehicles Services</span>
-        </div>
-      </div>
-
-      <!--Car-->
-      <picture class="cs-picture cs-picture1">
-        <!--Mobile Image-->
-        <source
-          media="(max-width: 600px)"
-          srcset="/assets/images/SEAT-Homepage.webp"
-        />
-        <!--Tablet and above Image-->
-        <source
-          media="(min-width: 601px)"
-          srcset="/assets/images/SEAT-Homepage.webp"
-        />
-        <img
-          loading="lazy"
-          decoding="async"
-          src="/assets/images/SEAT-Homepage.webp"
-          alt="appliance"
-          width="858"
-          height="477"
-        />
-      </picture>
-
-      <!--Person, to make your own crop of a person, use https://www.remove.bg/ to remove the background of any image -->
-      <picture class="cs-picture cs-picture2"> </picture>
-
-      <!--Stripe background-->
-      <div class="cs-graphic-wrapper">
-        <img
-          class="cs-graphic"
-          loading="lazy"
-          decoding="async"
-          src="assets/svgs/tire-mark.svg"
-          alt="tire mark"
-          width="1469"
-          height="626"
-          aria-hidden="true"
-        />
-      </div>
-    </div>
-    <div class="cs-content">
-      <span class="cs-topper">Who We Are</span>
-      <h2 class="cs-title">Expert Mobile Auto Services</h2>
-      <p class="cs-text">
-        All of our Vehicle Technicians are fully qualified with specialised
-        certifications in EV high voltage systems and gas handling, allowing us
-        to bring professional expertise directly to you. Our mobile services
-        means you can get expert automotive care without disrupting your
-        schedule.
+        Southwest Prestige cars are available for daily, weekly & weekend hire.
+        We offer Chauffeur Services for Weddings, Proms, Events, Corporate &
+        Music Videos. Super Cars available upon request.
       </p>
       <p class="cs-text">
-        We pride ourselves on flexibility and convenience, allowing you to
-        choose your preferred service location.
+        Experience the ultimate in luxury transportation with our meticulously
+        maintained fleet of premium vehicles. Whether you need transportation
+        for a special occasion or business travel, our professional service
+        ensures your journey is comfortable, stylish, and memorable.
       </p>
-      <a href="/about" class="cs-button-solid">Read More</a>
+      <a href="/contact" class="cs-button-solid">Bookings</a>
     </div>
   </div>
 </section>
 
 <!-- ============================================ -->
-<!--                  Gallery                     -->
+<!--                  Services                    -->
 <!-- ============================================ -->
 
-<section id="gallery-2250">
+<section id="services-2198">
   <div class="cs-container">
     <div class="cs-content">
-      <span class="cs-topper">Gallery</span>
-      <h2 class="cs-title">Our Latest Work</h2>
-      <p class="cs-text">
-        Take a look at some of our recent installations and modifications. From
-        custom body kits and ambient lighting to vehicle coding and general
-        servicing, here's what we've been working on.
-      </p>
+      <span class="cs-topper">What We Do</span>
+      <h2 class="cs-title">Chauffeur & Hire Services</h2>
     </div>
     <ul class="cs-card-group">
       <li class="cs-item">
-        <a
-          href="https://www.instagram.com/noble.autos/p/DFSo38kta8j/?img_index=1"
-          class="cs-link"
-        >
-          <div class="cs-wrapper">
-            <span class="cs-header">Mercedes W214</span>
-            <h3 class="cs-h3">
-              Body Kit Installation
-              <img
-                class="cs-icon"
-                loading="lazy"
-                decoding="async"
-                src="/assets/svgs/upper-right-arrow.svg"
-                alt="icon"
-                width="32"
-                height="32"
-                aria-hidden="true"
-              />
-            </h3>
-          </div>
-          <!--Background Image-->
-          <picture class="cs-background">
+        <a class="cs-link">
+          <picture class="cs-picture">
             <!--Mobile Image-->
             <source
               media="(max-width: 600px)"
-              srcset="/assets/images/mercedes-w214-bodykit-installation.webp"
+              srcset="/assets/images/chauffeur-hire-homepage.jpg"
             />
             <!--Tablet and above Image-->
             <source
               media="(min-width: 601px)"
-              srcset="/assets/images/mercedes-w214-bodykit-installation.webp"
+              srcset="/assets/images/chauffeur-hire-homepage.jpg"
             />
-            <img
-              decoding="async"
-              src="/assets/images/mercedes-w214-bodykit-installation.webp"
-              alt="person"
-              width="352"
-              height="440"
-            />
-          </picture>
-        </a>
-      </li>
-      <li class="cs-item cs-shift">
-        <a
-          href="https://www.instagram.com/noble.autos/p/DE5Q1ZgthQ8/"
-          class="cs-link"
-        >
-          <div class="cs-wrapper">
-            <span class="cs-header">Audi S3 8Y</span>
-            <h3 class="cs-h3">
-              Coding
-              <img
-                class="cs-icon"
-                loading="lazy"
-                decoding="async"
-                src="/assets/svgs/upper-right-arrow.svg"
-                alt="icon"
-                width="32"
-                height="32"
-                aria-hidden="true"
-              />
-            </h3>
-          </div>
-          <!--Background Image-->
-          <picture class="cs-background">
-            <!--Mobile Image-->
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/audi-s3-8y-coding.webp"
-            />
-            <!--Tablet and above Image-->
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/audi-s3-8y-coding.webp"
-            />
-            <img
-              decoding="async"
-              src="/assets/images/audi-s3-8y-coding.webp"
-              alt="person"
-              width="352"
-              height="440"
-            />
-          </picture>
-        </a>
-      </li>
-      <li class="cs-item">
-        <a
-          href="https://www.instagram.com/noble.autos/p/DFLjeQsOWLZ/?img_index=1"
-          class="cs-link"
-        >
-          <div class="cs-wrapper">
-            <span class="cs-header">Ford Fiesta</span>
-            <h3 class="cs-h3">
-              Vehicle Repairs
-              <img
-                class="cs-icon"
-                loading="lazy"
-                decoding="async"
-                src="/assets/svgs/upper-right-arrow.svg"
-                alt="icon"
-                width="32"
-                height="32"
-                aria-hidden="true"
-              />
-            </h3>
-          </div>
-          <!--Background Image-->
-          <picture class="cs-background">
-            <!--Mobile Image-->
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/Ford-Fiesta-vehicle-repairs.webp"
-            />
-            <!--Tablet and above Image-->
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/Ford-Fiesta-vehicle-repairs.webp"
-            />
-            <img
-              decoding="async"
-              src="/assets/images/Ford-Fiesta-vehicle-repairs.webp"
-              alt="person"
-              width="352"
-              height="440"
-            />
-          </picture>
-        </a>
-      </li>
-      <li class="cs-item">
-        <a
-          href="https://www.instagram.com/noble.autos/p/DELwV3aNuKs/?img_index=1"
-          class="cs-link"
-        >
-          <div class="cs-wrapper">
-            <span class="cs-header">Mercedes W205</span>
-            <h3 class="cs-h3">
-              Carplay Retrofit
-              <img
-                class="cs-icon"
-                loading="lazy"
-                decoding="async"
-                src="/assets/svgs/upper-right-arrow.svg"
-                alt="icon"
-                width="32"
-                height="32"
-                aria-hidden="true"
-              />
-            </h3>
-          </div>
-          <!--Background Image-->
-          <picture class="cs-background">
-            <!--Mobile Image-->
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/Mercedes-W205-carplay-retrofit.webp"
-            />
-            <!--Tablet and above Image-->
-            <source
-              media="(min-width: 601px)"
-              srcset="/assets/images/Mercedes-W205-carplay-retrofit.webp"
-            />
-            <img
-              decoding="async"
-              src="/assets/images/Mercedes-W205-carplay-retrofit.webp"
-              alt="person"
-              width="352"
-              height="440"
-            />
-          </picture>
-        </a>
-      </li>
-      <li class="cs-item cs-shift">
-        <a
-          href="https://www.instagram.com/noble.autos/p/DFQS5sWNeuQ/?img_index=1"
-          class="cs-link"
-        >
-          <div class="cs-wrapper">
-            <span class="cs-header">BMW M4</span>
-            <h3 class="cs-h3">
-              Front Splitter Installation
-              <img
-                class="cs-icon"
-                loading="lazy"
-                decoding="async"
-                src="/assets/svgs/upper-right-arrow.svg"
-                alt="icon"
-                width="32"
-                height="32"
-                aria-hidden="true"
-              />
-            </h3>
-          </div>
-          <!--Background Image-->
-          <picture class="cs-background">
-            <!--Mobile Image-->
-            <source
-              media="(max-width: 600px)"
-              srcset="/assets/images/BMW-M4-front-splitter-installation.webp"
-            />
-            <!--Tablet and above Image-->
-            <source
-              srcset="/assets/images/BMW-M4-front-splitter-installation.webp"
-            />
-
             <img
               loading="lazy"
               decoding="async"
-              src="/assets/images/BMW-M4-front-splitter-installation.webp"
-              alt="person"
-              width="352"
-              height="440"
+              src="/assets/images/chauffeur-hire-homepage.jpg"
+              alt="wedding photography"
+              width="413"
+              height="340"
             />
           </picture>
+          <div class="cs-flex">
+            <h3 class="cs-h3">Chauffeur Hire</h3>
+          </div>
+          <p class="cs-item-text">
+            Enjoy a new driving experience by taking the wheel of one of our
+            high-end vehicles. Whether it's a weekend getaway, a special
+            occasion or coporate.
+          </p>
         </a>
       </li>
       <li class="cs-item">
-        <a
-          href="https://www.instagram.com/noble.autos/p/DD1-R-coUBW/?img_index=1"
-          class="cs-link"
-        >
-          <div class="cs-wrapper">
-            <span class="cs-header">VW Golf MK6</span>
-            <h3 class="cs-h3">
-              Footwell Lighting
-              <img
-                class="cs-icon"
-                loading="lazy"
-                decoding="async"
-                src="/assets/svgs/upper-right-arrow.svg"
-                alt="icon"
-                width="32"
-                height="32"
-                aria-hidden="true"
-              />
-            </h3>
-          </div>
-          <!--Background Image-->
-          <picture class="cs-background">
+        <a class="cs-link">
+          <picture class="cs-picture">
             <!--Mobile Image-->
             <source
               media="(max-width: 600px)"
-              srcset="/assets/images/VW-Golf-MK6-footwell-lighting.webp"
+              srcset="/assets/images/wedding-homepage.jpg"
             />
             <!--Tablet and above Image-->
             <source
               media="(min-width: 601px)"
-              srcset="/assets/images/VW-Golf-MK6-footwell-lighting.webp"
+              srcset="/assets/images/wedding-homepage.jpg"
             />
             <img
+              loading="lazy"
               decoding="async"
-              src="/assets/images/VW-Golf-MK6-footwell-lighting.webp"
-              alt="person"
-              width="352"
-              height="440"
+              src="/assets/images/wedding-homepage.jpg"
+              alt="wedding photography"
+              width="413"
+              height="340"
             />
           </picture>
+          <div class="cs-flex">
+            <h3 class="cs-h3">Weddings</h3>
+          </div>
+          <p class="cs-item-text">
+            Trust us to enhance the magic of your special day, offering not just
+            transportation but an experience of unparalleled reliability &
+            elegance.
+          </p>
+        </a>
+      </li>
+      <li class="cs-item">
+        <a class="cs-link">
+          <picture class="cs-picture">
+            <!--Mobile Image-->
+            <source
+              media="(max-width: 600px)"
+              srcset="/assets/images/prom-homepage.jpg"
+            />
+            <!--Tablet and above Image-->
+            <source
+              media="(min-width: 601px)"
+              srcset="/assets/images/prom-homepage.jpg"
+            />
+            <img
+              loading="lazy"
+              decoding="async"
+              src="/assets/images/prom-homepage.jpg"
+              alt="wedding photography"
+              width="413"
+              height="340"
+            />
+          </picture>
+          <div class="cs-flex">
+            <h3 class="cs-h3">Proms</h3>
+          </div>
+          <p class="cs-item-text">
+            In a night of glamour and sophistication with friends,
+            treat yourself to luxury transportation to help make your prom night
+            extra special to remember.
+          </p>
         </a>
       </li>
     </ul>
@@ -678,70 +284,236 @@ eleventyNavigation:
 </section>
 
 <!-- ============================================ -->
-<!--                   Reviews                    -->
+<!--                  Side By Side                -->
 <!-- ============================================ -->
 
-<section id="reviews-64">
+<section id="sbs-2295">
   <div class="cs-container">
-    <div class="cs-content">
-      <span class="cs-topper">Our Reviews</span>
-      <h2 class="cs-title">Words From Our Customers</h2>
-      <p class="cs-text">
-        Feedback from our customers across Bristol and surrounding areas.
-      </p>
+    <div class="cs-image-group">
+      <!--Main Image-->
+      <div class="cs-picture-wrapper1">
+        <picture class="cs-picture cs-picture1">
+          <!--Mobile Image-->
+          <source
+            media="(max-width: 600px)"
+            srcset="/assets/images/bmw-m5-back.jpg"
+          />
+          <!--Tablet and above Image-->
+          <source
+            media="(min-width: 601px)"
+            srcset="/assets/images/bmw-m5-back.jpg"
+          />
+          <img
+            loading="lazy"
+            decoding="async"
+            src="/assets/images/bmw-m5-back.jpg"
+            alt="construction"
+            width="272"
+            height="337"
+          />
+        </picture>
+      </div>
+      <!--Small Image-->
+      <div class="cs-picture-wrapper2">
+        <picture class="cs-picture cs-picture2">
+          <!--Mobile Image-->
+          <source
+            media="(max-width: 600px)"
+            srcset="/assets/images/bmw-m5-front.jpg"
+          />
+          <!--Tablet and above Image-->
+          <source
+            media="(min-width: 601px)"
+            srcset="/assets/images/bmw-m5-front.jpg"
+          />
+          <img
+            loading="lazy"
+            decoding="async"
+            src="/assets/images/bmw-m5-front.jpg"
+            alt="construction"
+            width="243"
+            height="367"
+          />
+        </picture>
+      </div>
     </div>
-    <ul class="cs-card-group">
-      <li class="cs-item">
-        <img
-          class="cs-img"
-          aria-hidden="true"
-          loading="lazy"
-          decoding="async"
-          src="assets/svgs/stars-yellow.svg"
-          alt="profile"
-          width="116"
-          height="20"
-        />
-        <span class="cs-name">David M.</span>
-        <span class="cs-desc">BMW 330i Owner</span>
-        <p class="cs-item-text">
-          Couldn’t be happier, the car looks great! Thanks again.
-        </p>
-      </li>
-      <li class="cs-item">
-        <img
-          class="cs-img"
-          aria-hidden="true"
-          loading="lazy"
-          decoding="async"
-          src="assets/svgs/stars-yellow.svg"
-          alt="profile"
-          width="116"
-          height="20"
-        />
-        <span class="cs-name">Farhan H.</span>
-        <span class="cs-desc">VW Golf MK7 Owner</span>
-        <p class="cs-item-text">Noble Autos is the best in the game !!</p>
-      </li>
-      <li class="cs-item">
-        <img
-          class="cs-img"
-          aria-hidden="true"
-          loading="lazy"
-          decoding="async"
-          src="assets/svgs/stars-yellow.svg"
-          alt="profile"
-          width="116"
-          height="20"
-        />
-        <span class="cs-name">Sahil S.</span>
-        <span class="cs-desc">Seat Leon Cupra Owner</span>
-        <p class="cs-item-text">
-          Everyone contact @Noble Autos for the best body kit fittings in
-          Bristol !
-        </p>
-      </li>
-    </ul>
+    <div class="cs-content">
+      <span class="cs-topper">Luxury Vehicle</span>
+      <h2 class="cs-title">BMW M5 Competition</h2>
+      <p class="cs-text">
+        Experience the perfect balance of luxury sedan comfort and supercar
+        performance with our BMW M5. This high-performance vehicle delivers
+        exceptional driving dynamics while maintaining the refinement expected
+        from a premium executive car.
+      </p>
+      <ul class="cs-ul">
+        <li class="cs-li">4.4L twin-turbo V8 engine with 617 horsepower</li>
+        <li class="cs-li">0-60 mph in just 3.1 seconds</li>
+        <li class="cs-li">
+          M xDrive all-wheel drive system with selectable rear-wheel drive mode
+        </li>
+        <li class="cs-li">8-speed M Steptronic transmission</li>
+        <li class="cs-li">
+          Adaptive M suspension with specific Competition tuning
+        </li>
+        <li class="cs-li">Premium Merino leather interior</li>
+      </ul>
+      <a href="/contact" class="cs-button-solid">Book It!</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!--                  Side By Side                -->
+<!-- ============================================ -->
+
+<section id="sbs-2296">
+  <div class="cs-container">
+    <div class="cs-image-group">
+      <!--Main Image-->
+      <div class="cs-picture-wrapper1">
+        <picture class="cs-picture cs-picture1">
+          <!--Mobile Image-->
+          <source
+            media="(max-width: 600px)"
+            srcset="/assets/images/audi-rs3-back.jpg"
+          />
+          <!--Tablet and above Image-->
+          <source
+            media="(min-width: 601px)"
+            srcset="/assets/images/audi-rs3-back.jpg"
+          />
+          <img
+            loading="lazy"
+            decoding="async"
+            src="/assets/images/audi-rs3-back.jpg"
+            alt="construction"
+            width="272"
+            height="337"
+          />
+        </picture>
+      </div>
+      <!--Small Image-->
+      <div class="cs-picture-wrapper2">
+        <picture class="cs-picture cs-picture2">
+          <!--Mobile Image-->
+          <source
+            media="(max-width: 600px)"
+            srcset="/assets/images/audi-rs3-front.jpg"
+          />
+          <!--Tablet and above Image-->
+          <source
+            media="(min-width: 601px)"
+            srcset="/assets/images/audi-rs3-front.jpg"
+          />
+          <img
+            loading="lazy"
+            decoding="async"
+            src="/assets/images/audi-rs3-front.jpg"
+            alt="construction"
+            width="243"
+            height="367"
+          />
+        </picture>
+      </div>
+    </div>
+    <div class="cs-content">
+      <span class="cs-topper">Luxury Vehicle</span>
+      <h2 class="cs-title">AUDI RS3 (Hyper) Hatch</h2>
+      <p class="cs-text">
+        Unleash the thrill of performance driving with the Audi RS3. This
+        high-performance hatch combines exhilarating power, cutting-edge
+        technology and sophisticated design with impressive everyday usability.
+      </p>
+
+      <ul class="cs-ul">
+        <li class="cs-li">
+          2.5 Litre 5 Cylinder Engine with 450bhp (Stage 1 Remap)
+        </li>
+        <li class="cs-li">0-60 mph in just 3.5 seconds</li>
+        <li class="cs-li">Quattro all-wheel drive system</li>
+        <li class="cs-li">7-speed S tronic dual-clutch transmission</li>
+        <li class="cs-li">RS sport suspension</li>
+        <li class="cs-li">Premium Nappa leather interior</li>
+      </ul>
+      <a href="/contact" class="cs-button-solid">Book It!</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!--                  Side By Side                -->
+<!-- ============================================ -->
+
+<section id="sbs-2297">
+  <div class="cs-container">
+    <div class="cs-image-group">
+      <!--Main Image-->
+      <div class="cs-picture-wrapper1">
+        <picture class="cs-picture cs-picture1">
+          <!--Mobile Image-->
+          <source
+            media="(max-width: 600px)"
+            srcset="/assets/images/mercedes-cla-back.jpg"
+          />
+          <!--Tablet and above Image-->
+          <source
+            media="(min-width: 601px)"
+            srcset="/assets/images/mercedes-cla-back.jpg"
+          />
+          <img
+            loading="lazy"
+            decoding="async"
+            src="/assets/images/mercedes-cla-back.jpg"
+            alt="construction"
+            width="272"
+            height="337"
+          />
+        </picture>
+      </div>
+      <!--Small Image-->
+      <div class="cs-picture-wrapper2">
+        <picture class="cs-picture cs-picture2">
+          <!--Mobile Image-->
+          <source
+            media="(max-width: 600px)"
+            srcset="/assets/images/mercedes-cla-front.jpg"
+          />
+          <!--Tablet and above Image-->
+          <source
+            media="(min-width: 601px)"
+            srcset="/assets/images/mercedes-cla-front.jpg"
+          />
+          <img
+            loading="lazy"
+            decoding="async"
+            src="/assets/images/mercedes-cla-front.jpg"
+            alt="construction"
+            width="243"
+            height="367"
+          />
+        </picture>
+      </div>
+    </div>
+    <div class="cs-content">
+      <span class="cs-topper">Luxury Vehicle</span>
+      <h2 class="cs-title">Mercedes-Benz CLA45S AMG</h2>
+      <p class="cs-text">
+        Introducing the Mercedes-Benz CLA45S AMG - a sleek and powerful luxury
+        vehicle that combines performance, style and cutting-edge technology for
+        an unparalleled driving experience.
+      </p>
+
+      <ul class="cs-ul">
+        <li class="cs-li">2.0L Turbocharged engine with 416 horsepower</li>
+        <li class="cs-li">0-60 mph in just 4.0 seconds</li>
+        <li class="cs-li">4MATIC+ all-wheel drive system</li>
+        <li class="cs-li">8-speed dual-clutch transmission</li>
+        <li class="cs-li">AMG sport suspension system</li>
+        <li class="cs-li">Available for daily, weekly and weekend hire</li>
+      </ul>
+      <a href="/contact" class="cs-button-solid">Book It!</a>
+    </div>
   </div>
 </section>
 
@@ -753,14 +525,16 @@ eleventyNavigation:
   <div class="cs-container">
     <div class="cs-content">
       <span class="cs-topper">Get in Touch</span>
-      <h2 class="cs-title">Ready to Transform Your Vehicle?</h2>
+      <h2 class="cs-title">Experience Luxury On Your Terms</h2>
       <p class="cs-text">
-        Book our mobile service today and get expert automotive care at your
-        location in Bristol and surrounding areas.
+        Book our premium vehicles today and enjoy exceptional luxury car hire
+        throughout the UK. Daily, weekly, and chauffeur services available
+        nationwide.
       </p>
       <div class="cs-button-box">
-        <a href="/about" class="cs-button-solid-dark">About Us</a>
-        <a href="/services" class="cs-button-transparent">View Services</a>
+        <a href="/about" class="cs-button-solid">About Us</a>
+        <a href="/our-fleet" class="cs-button-solid">Our Fleet</a>
+        <a href="/contact" class="cs-button-solid">Contact Us</a>
       </div>
     </div>
   </div>
