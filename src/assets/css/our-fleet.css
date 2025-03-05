@@ -484,6 +484,7 @@
     padding: var(--sectionPadding);
     position: relative;
     background-color: #1a1a1a;
+    margin-bottom: -1px;
   }
   #cta-51 .cs-container {
     width: 100%;
