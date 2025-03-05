@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f7f7f7;
+  background-color: #fff5f5;
 }
 #thank-you .cs-container {
   width: 100%;
@@ -21,7 +21,7 @@
   max-width: 40rem;
   margin: auto;
   padding: 2rem;
-  background-color: #fff;
+  background-color: #1a1a1a;
   border-radius: 0.5rem;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
