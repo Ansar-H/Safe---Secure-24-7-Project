@@ -32,15 +32,15 @@ eleventyNavigation:
   }
 </script>
 
-<!-- Add AOS JS -->
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
-  // Initialize AOS
   document.addEventListener("DOMContentLoaded", function () {
+    console.log("AOS object:", AOS);
     AOS.init({
       duration: 800,
       easing: "ease-out",
       once: true,
+      debug: true,
     });
   });
 </script>
