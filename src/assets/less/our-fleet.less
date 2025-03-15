@@ -177,7 +177,7 @@
 }
 
 /*-- -------------------------- -->
-<---          Services          -->
+<---          Gallery          -->
 <--- -------------------------- -*/
 
 /* Mobile - 360px */
@@ -291,13 +291,34 @@
     }
 
     .cs-header {
-      /* 16px - 20px */
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      font-weight: 700;
-      line-height: 1.2em;
-      text-align: inherit;
-      margin: 0;
-      color: var(--primary);
+      background-color: var(--primary);
+      color: #1a1a1a;
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin: 0 0 4px 0;
+      z-index: 15;
+      position: absolute;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      border: 1px solid #1a1a1a;
+      right: 12px;
+      min-width: 110px; /* Add this line to set consistent width */
+      text-align: center;
+
+      /* Daily rate - top position */
+      &:nth-of-type(1) {
+        top: 12px;
+      }
+
+      /* Weekend rate - middle position */
+      &:nth-of-type(2) {
+        top: 46px; /* 12px + ~30px for badge height and spacing */
+      }
+
+      /* Weekly rate - bottom position */
+      &:nth-of-type(3) {
+        top: 80px; /* 42px + ~30px for badge height and spacing */
+      }
     }
 
     .cs-h3 {
@@ -394,6 +415,32 @@
         /* 60px - 100px */
         top: clamp(3.75rem, 6vw, 6.25rem);
       }
+    }
+    .cs-header {
+      position: static; /* Reset to static positioning */
+      background-color: transparent;
+      color: var(--primary);
+      box-shadow: none;
+      margin: 0;
+      padding: 0;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+
+      /* Reset all the specific positioning */
+      &:nth-of-type(1),
+      &:nth-of-type(2),
+      &:nth-of-type(3) {
+        position: static;
+        top: auto;
+        right: auto;
+      }
+    }
+    .cs-wrapper {
+      opacity: 1; /* Make visible by default on desktop */
+    }
+    .cs-item:hover .cs-wrapper,
+    .cs-item:focus-within .cs-wrapper {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 }
