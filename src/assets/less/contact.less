@@ -13,6 +13,33 @@
     position: relative;
     z-index: 1;
 
+    .cs-select {
+      font-size: (16/16rem);
+      width: 100%;
+      /* 46px - 56px */
+      height: clamp(2.875rem, 5.5vw, 3.5rem);
+      /* prevents padding from adding to height and width */
+      box-sizing: border-box;
+      padding: 0 (24/16rem);
+      background-color: #fff;
+      color: #1a1a1a;
+      border: 1px solid #d1d1d1; /* Add border to all inputs */
+      border-radius: 8px; /* Consistent border radius */
+      transition: border-color 0.3s ease; /* Smooth transition for hover/focus */
+
+      margin-top: (16/16rem);
+
+      &:focus {
+        outline: none;
+        border-color: #eda708; /* Gold border on focus - matches your brand color */
+        box-shadow: 0 0 0 2px rgba(237, 167, 8, 0.3); /* Subtle glow effect */
+      }
+
+      &::placeholder {
+        color: #767676;
+      }
+    }
+
     .cs-container {
       width: 100%;
       /* changes to 1280px at tablet */
@@ -155,6 +182,7 @@
       justify-content: center;
       align-items: flex-start;
       gap: (4/16rem);
+      margin-bottom: (2/16rem) !important;
     }
 
     .cs-input {
@@ -166,9 +194,15 @@
       color: #1a1a1a;
       background-color: #fff;
       border-radius: (8/16rem);
-      border: none;
+      border: 1px solid #d1d1d1;
       /* prevents padding from adding to height and width */
       box-sizing: border-box;
+      &:focus {
+        outline: none;
+        border-color: #eda708; /* Gold border on focus - matches your brand color */
+        box-shadow: 0 0 0 2px rgba(237, 167, 8, 0.3); /* Subtle glow effect */
+      }
+
       &::placeholder {
         color: #7d799c;
         opacity: 0.6;

@@ -12,6 +12,34 @@
     position: relative;
     z-index: 1;
   }
+  #contact-1388 .cs-select {
+    font-size: 1rem;
+    width: 100%;
+    /* 46px - 56px */
+    height: clamp(2.875rem, 5.5vw, 3.5rem);
+    /* prevents padding from adding to height and width */
+    box-sizing: border-box;
+    padding: 0 1.5rem;
+    background-color: #fff;
+    color: #1a1a1a;
+    border: 1px solid #d1d1d1;
+    /* Add border to all inputs */
+    border-radius: 8px;
+    /* Consistent border radius */
+    transition: border-color 0.3s ease;
+    /* Smooth transition for hover/focus */
+    margin-top: 1rem;
+  }
+  #contact-1388 .cs-select:focus {
+    outline: none;
+    border-color: #eda708;
+    /* Gold border on focus - matches your brand color */
+    box-shadow: 0 0 0 2px rgba(237, 167, 8, 0.3);
+    /* Subtle glow effect */
+  }
+  #contact-1388 .cs-select::placeholder {
+    color: #767676;
+  }
   #contact-1388 .cs-container {
     width: 100%;
     /* changes to 1280px at tablet */
@@ -138,6 +166,7 @@
     justify-content: center;
     align-items: flex-start;
     gap: 0.25rem;
+    margin-bottom: 0.125rem !important;
   }
   #contact-1388 .cs-input {
     font-size: 1rem;
@@ -148,9 +177,16 @@
     color: #1a1a1a;
     background-color: #fff;
     border-radius: 0.5rem;
-    border: none;
+    border: 1px solid #d1d1d1;
     /* prevents padding from adding to height and width */
     box-sizing: border-box;
+  }
+  #contact-1388 .cs-input:focus {
+    outline: none;
+    border-color: #eda708;
+    /* Gold border on focus - matches your brand color */
+    box-shadow: 0 0 0 2px rgba(237, 167, 8, 0.3);
+    /* Subtle glow effect */
   }
   #contact-1388 .cs-input::placeholder {
     color: #7d799c;

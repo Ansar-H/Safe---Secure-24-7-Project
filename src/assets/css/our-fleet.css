@@ -166,6 +166,9 @@
     z-index: 1;
     margin-bottom: -1px;
   }
+  #gallery-2250 .cs-text {
+    max-width: 110ch;
+  }
   #gallery-2250 .cs-container {
     width: 100%;
     /* changes to 1840px at tablet */
@@ -187,7 +190,7 @@
     align-items: center;
   }
   #gallery-2250 .cs-title {
-    max-width: 40ch;
+    max-width: 30ch;
   }
   #gallery-2250 .cs-card-group {
     width: 100%;
