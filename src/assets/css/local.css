@@ -244,6 +244,7 @@
     padding: var(--sectionPadding);
     overflow: hidden;
     background-color: #1a1a1a;
+    margin-bottom: -1px;
   }
   #sbs-2291 .cs-container {
     width: 100%;
@@ -254,7 +255,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    gap: 3rem;
   }
   #sbs-2291 .cs-content {
     /* set text align to left if content needs to be left aligned */
@@ -333,7 +333,7 @@
     display: block;
     position: absolute;
     top: 0;
-    bottom: 5.9375rem;
+    bottom: 4rem;
     left: 0;
   }
   #sbs-2291 .cs-picture img {
