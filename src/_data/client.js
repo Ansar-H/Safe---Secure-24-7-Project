@@ -1,8 +1,8 @@
 module.exports = {
-  name: "Southwest Prestige Hire",
-  email: "southwestprestigehire@gmail.com",
-  phoneForTel: "44-1234-567-890",
-  phoneFormatted: "(44) 1234-567890",
+  name: "Safe & Secure 24/7",
+  email: "sas247@btinternet.com",
+  phoneForTel: "44-7821-999989",
+  phoneFormatted: "(44) 7821-999989",
   address: {
     city: "Bristol",
     country: "UK",
