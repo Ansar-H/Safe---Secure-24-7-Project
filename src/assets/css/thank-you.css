@@ -2,10 +2,11 @@
 #thank-you {
   min-height: 70vh;
   padding: var(--sectionPadding);
+  padding-top: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #fff5f5;
+  background-color: #f7f7f7;
 }
 #thank-you .cs-container {
   width: 100%;
@@ -21,7 +22,7 @@
   max-width: 40rem;
   margin: auto;
   padding: 2rem;
-  background-color: #1a1a1a;
+  background-color: #fff;
   border-radius: 0.5rem;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
@@ -31,7 +32,7 @@
   line-height: 1.2em;
   text-align: center;
   margin: 0 0 1rem 0;
-  color: var(--primaryColor);
+  color: var(--headerColor);
 }
 #thank-you .cs-text {
   font-size: 1.2rem;

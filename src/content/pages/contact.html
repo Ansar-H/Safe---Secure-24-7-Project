@@ -1,11 +1,11 @@
 ---
-title: "Contact Us | Southwest Prestige Hire"
-description: "Book your luxury vehicle hire or chauffeur service with Southwest Prestige Hire. Available for weddings, proms, corporate events and special occasions across the UK. Get in touch for quotes and availability."
+title: "Contact Us | Safe & Secure 24/7"
+description: "Contact Safe & Secure 24/7 for emergency boarding up, window repairs, door services, and glazing services in Bristol and surrounding areas including Bath, Weston-super-Mare, and Nailsea."
 permalink: "contact/"
 bodyClass: "contact-page"
 eleventyNavigation:
   key: Contact Us
-  order: 600
+  order: 700
   hideOnDesktop: true
 ---
 
@@ -14,128 +14,100 @@ eleventyNavigation:
 {% endblock %} {% block body %}
 
 <!-- ============================================ -->
+<!--                    Hero                      -->
+<!-- ============================================ -->
+
+<section id="hero-493">
+    <div class="cs-container">
+        <div class="cs-content">
+            <h1 class="cs-title">Contact <span class="cs-gradient-text">Safe & Secure 24/7</span></h1>
+            <p class="cs-text">
+                Get in touch today to arrange a free consultation and discover how we can make your property safer, more secure, and beautifully finished — 24 hours a day, 7 days a week.
+            </p>
+        </div>
+    </div>
+</section> 
+
+<!-- ============================================ -->
 <!--                   Contact                    -->
 <!-- ============================================ -->
 
-<section id="contact-1388">
-  <div class="cs-container">
-    <div class="cs-content">
-      <span class="cs-topper">Contact Us</span>
-      <h2 class="cs-title">Get in Touch</h2>
-      <p class="cs-text">
-        Contact Southwest Prestige Hire today to elevate your driving experience
-        and add a touch of luxury to your special occasions. For Quotes and
-        Bookings, please use our Form. Our dedicated team is ready to assist you
-        in selecting the perfect vehicle or arranging professional chauffeur
-        services for weddings, proms, music videos, events and more. Southwest
-        Prestige Hire where every journey is a statement of luxury.
-      </p>
-      <ul class="cs-ul">
-        <li class="cs-li">
-          <picture class="cs-icon-wrapper">
-            <img
-              aria-hidden="true"
-              src="/assets/svgs/email.svg"
-              alt="email address icon"
-              class="cs-icon"
-              width="40"
-              height="40"
-              decoding="async"
-            />
-          </picture>
-          <div class="cs-flex-group">
-            <span class="cs-header">Email</span>
-            <a class="cs-link">southwestprestigehire@gmail.com</a>
-          </div>
-        </li>
-        <li class="cs-li">
-          <picture class="cs-icon-wrapper">
-            <img
-              aria-hidden="true"
-              src="/assets/svgs/location.svg"
-              alt="location icon"
-              class="cs-icon"
-              width="40"
-              height="40"
-              decoding="async"
-            />
-          </picture>
-          <div class="cs-flex-group">
-            <span class="cs-header">Areas Served</span>
-            <a class="cs-link">Across the UK</a>
-          </div>
-        </li>
-      </ul>
+<section id="contact-2320">
+    <div class="cs-container">
+        <div class="cs-content">
+            <span class="cs-topper">Contact Us</span>
+            <h2 class="cs-title">Get In Touch</h2>
+            <p class="cs-text">
+                 Need urgent assistance, looking to upgrade your windows and doors, or planning a new installation? Our team is available 24/7 to help. Send us a message and we’ll get back to you as soon as possible.
+            </p>
+            <!--Form-->
+            <form class="cs-form" id="cs-form-323-2320" name="Contact Form" method="POST" action="/thank-you/" data-netlify="true">
+                <label class="cs-label">
+                    Name
+                    <input class="cs-input" required type="text" name="name" placeholder="Name">
+                </label>
+                <label class="cs-label cs-email">
+                    Email
+                    <input class="cs-input" required type="email" name="email" placeholder="Email">
+                </label>
+                <label class="cs-label cs-phone">
+                    Phone
+                    <input class="cs-input" required type="tel" name="phone" placeholder="Phone">
+                </label>
+                <label class="cs-label cs-services">
+                    Services
+                    <select class="cs-input" name="Services">
+                        <option value="" disabled selected>Select a Service</option>
+                        <option value="Painting">Window Repairs & Installation</option>
+                        <option value="Kitchen Remodels">Door Services & Security</option>
+                        <option value="Bathroom Remodels">Emergency Boarding Up</option>
+                        <option value="Carpentry">Glazing & Glass Services</option>
+                        <option value="Roofing">Other</option>
+                    </select>
+                </label>
+                <label class="cs-label">
+                    Message
+                    <textarea class="cs-input cs-textarea" required name="Message" placeholder="Write message..."></textarea>
+                </label>
+                <button class="cs-button-solid cs-submit" type="submit">Send Message</button>
+            </form>
+        </div>
+        <!--Map Image, pin is made in the Figma then export as one image-->
+        <div class="cs-map">
+            <div class="cs-iframe-wrapper">
+              <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d159253.0918755987!2d-2.7071756069633246!3d51.467255382220564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4871836681b3d861%3A0x8ee4b22e4b9ad71f!2sBristol%2C%20UK!5e0!3m2!1sen!2sus!4v1698765432109!5m2!1sen!2sus" 
+                  width="600" 
+                  height="450" 
+                  style="border:0;" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+            <div class="cs-box">
+                <img class="cs-icon" decoding="async" loading="lazy" src="/assets/svgs/location.svg" alt="icon" width="40" height="40" aria-hidden="true">
+                <div class="cs-flex">
+                    <span class="cs-header">Location</span>
+                    <span class="cs-address">Bristol & Surrounding Areas
+                    </span>
+                </div>
+            </div>
+        </div>
     </div>
-    <!--Form-->
-    <form
-      class="cs-form"
-      id="cs-form-1388"
-      name="Contact Form"
-      method="post"
-      data-netlify="true"
-      action="/thank-you/"
-    >
-      <h3 class="cs-h3">Book A Vehicle</h3>
-      <label class="cs-label">
-        Name
-        <input
-          class="cs-input"
-          required
-          type="text"
-          id="name-1388"
-          name="name"
-          placeholder="Name"
-        />
-      </label>
-      <label class="cs-label cs-email">
-        Email
-        <input
-          class="cs-input"
-          required
-          type="email"
-          id="email-1388"
-          name="email"
-          placeholder="Email"
-        />
-      </label>
-      <label class="cs-label cs-phone">
-        Phone
-        <input
-          class="cs-input"
-          required
-          type="text"
-          id="phone-1388"
-          name="phone"
-          placeholder="Phone"
-        />
-      </label>
-      <label class="cs-label">
-        <select
-          class="cs-select"
-          name="class"
-          id="classes-2147"
-          placeholder="Services"
-        >
-          <option value="Vehicle Rental">Vehicle Rental</option>
-          <option value="Chauffeur Service">Chauffeur Service</option>
-        </select>
-      </label>
-      <label class="cs-label">
-        Message
-        <textarea
-          class="cs-input cs-textarea"
-          required
-          name="Message"
-          id="message-1388"
-          placeholder="Write message..."
-        ></textarea>
-      </label>
-      <button class="cs-button-solid cs-submit" type="submit">
-        Send Message
-      </button>
-    </form>
-  </div>
-</section>
+    <div class="cs-container2">
+        <picture class="cs-background">
+            <!--Mobile Image-->
+            <source media="(max-width: 600px)" srcset="/assets/images/front-garden.jpg">
+            <!--Tablet and above Image-->
+            <source media="(min-width: 601px)" srcset="/assets/images/front-garden.jpg">
+            <img loading="lazy" decoding="async" src="/assets/images/front-garden.jpg" alt="house" width="1280" height="243">
+        </picture>
+        <div class="cs-hours">
+            <div class="cs-topper">Working Hours</div>
+            <span class="cs-hours-info">Monday - Sunday: 24/7</span>
+        </div>
+    </div>
+</section>                          
 
 {% endblock %}
