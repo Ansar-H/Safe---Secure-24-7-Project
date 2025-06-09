@@ -961,6 +961,22 @@
           transition: transform .4s, opacity .3s;
       }
 
+      .cs-logo.cs-mobile img.cs-default {
+        width: 100%;
+        max-width: 210px; /* increase or tweak as needed */
+        height: auto;
+        object-fit: contain;
+      }
+    
+      .cs-logo.cs-mobile {
+        max-width: 260px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start; /* align to left */
+        margin-left: 0;
+        margin-right: auto;
+      }
+
       .cs-ul {
           margin: 0;
           /* 28px - 40px */
@@ -1102,7 +1118,7 @@
           transition: height .3s;
 
           img {
-              width: 80%;
+              width: 100%;
               max-width: (260/16rem);
               height: auto;
               max-height: (120/16rem);
