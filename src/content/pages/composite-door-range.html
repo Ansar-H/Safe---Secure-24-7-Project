@@ -69,29 +69,35 @@ eleventyNavigation:
       </div>
     </div>
 
-    <!-- Mobile Fallback -->
+    <!-- Mobile View -->
     <div class="cs-pdf-mobile">
       <div class="cs-mobile-notice">
         <h3>View Our Door Collection</h3>
-        <p>For the best experience viewing our 90-page brochure, please download the PDF or view on a larger screen.</p>
+        <p>Browse through our 90-page brochure with easy page navigation optimized for mobile.</p>
         <div class="cs-mobile-actions">
           <a href="/assets/pdfs/composite-doors-brochure2.pdf" class="cs-btn cs-btn-primary">
             Download Brochure
           </a>
           <button id="mobile-viewer-btn" class="cs-btn cs-btn-secondary">
-            View Online
+            View Interactive Brochure
           </button>
         </div>
       </div>
       
-      <!-- Simple mobile viewer -->
-      <div class="cs-mobile-viewer" id="mobile-viewer" style="display: none;">
-        <iframe 
-          src="/assets/pdfs/composite-doors-brochure2.pdf"
-          width="100%"
-          height="600px"
-          style="border: none;">
-        </iframe>
+      <!-- Mobile PDF viewer with proper controls -->
+      <div class="cs-mobile-pdf-viewer" id="mobile-pdf-viewer" style="display: none;">
+        <div class="cs-mobile-pdf-controls">
+          <button id="mobile-prev-page" class="cs-control-btn">‹ Prev</button>
+          <div class="cs-page-info">
+            <span id="mobile-page-num">1</span> / <span id="mobile-page-count">90</span>
+          </div>
+          <button id="mobile-next-page" class="cs-control-btn">Next ›</button>
+        </div>
+        
+        <div class="cs-mobile-pdf-canvas-container">
+          <canvas id="mobile-pdf-canvas"></canvas>
+          <div class="cs-loading" id="mobile-loading">Loading brochure...</div>
+        </div>
       </div>
     </div>
 
@@ -107,105 +113,251 @@ eleventyNavigation:
 </section>
 
 <script>
-// PDF.js implementation - Updated for 90-page PDF
+// PDF.js implementation for both desktop and mobile
 let pdfDoc = null;
-let pageNum = 1; // Now starts from page 1 (since you removed the unwanted first page)
+let pageNum = 1;
 let pageRendering = false;
 let pageNumPending = null;
 const scale = 1.5;
+const mobileScale = 1.2; // Slightly smaller scale for mobile
+
+// Desktop elements
 const canvas = document.getElementById('pdf-canvas');
-const ctx = canvas.getContext('2d');
+const ctx = canvas ? canvas.getContext('2d') : null;
 
-// Load PDF - Updated path for the new PDF
-pdfjsLib.getDocument('/assets/pdfs/composite-doors-brochure2.pdf').promise.then(function(pdfDoc_) {
-  pdfDoc = pdfDoc_;
-  // Show actual page count (should be 90)
-  document.getElementById('page-count').textContent = pdfDoc.numPages;
-  document.getElementById('loading').style.display = 'none';
-  renderPage(pageNum);
-}).catch(function(error) {
-  console.error('Error loading PDF:', error);
-  document.getElementById('loading').textContent = 'Error loading brochure. Please try downloading instead.';
-});
+// Mobile elements
+const mobileCanvas = document.getElementById('mobile-pdf-canvas');
+const mobileCtx = mobileCanvas ? mobileCanvas.getContext('2d') : null;
 
-// Render page - Simplified since no page offset needed
-function renderPage(num) {
-  pageRendering = true;
-  pdfDoc.getPage(num).then(function(page) {
-    const viewport = page.getViewport({scale: scale});
-    canvas.height = viewport.height;
-    canvas.width = viewport.width;
+// Mobile-specific variables
+let mobilePageNum = 1;
+let mobilePageRendering = false;
+let mobilePageNumPending = null;
 
-    const renderContext = {
-      canvasContext: ctx,
-      viewport: viewport
-    };
-    
-    const renderTask = page.render(renderContext);
-    renderTask.promise.then(function() {
-      pageRendering = false;
-      if (pageNumPending !== null) {
-        renderPage(pageNumPending);
-        pageNumPending = null;
-      }
+// Load PDF for desktop
+if (canvas) {
+    loadPDF('desktop');
+}
+
+// Function to load PDF
+function loadPDF(viewer) {
+    pdfjsLib.getDocument('/assets/pdfs/composite-doors-brochure2.pdf').promise.then(function(pdfDoc_) {
+        pdfDoc = pdfDoc_;
+        
+        if (viewer === 'desktop') {
+            document.getElementById('page-count').textContent = pdfDoc.numPages;
+            document.getElementById('loading').style.display = 'none';
+            renderPage(pageNum, 'desktop');
+        } else if (viewer === 'mobile') {
+            document.getElementById('mobile-page-count').textContent = pdfDoc.numPages;
+            document.getElementById('mobile-loading').style.display = 'none';
+            renderPage(mobilePageNum, 'mobile');
+        }
+    }).catch(function(error) {
+        console.error('Error loading PDF:', error);
+        const loadingEl = viewer === 'desktop' ? 
+            document.getElementById('loading') : 
+            document.getElementById('mobile-loading');
+        if (loadingEl) {
+            loadingEl.textContent = 'Error loading brochure. Please try downloading instead.';
+        }
     });
-  });
-
-  // Show actual page number (no adjustment needed)
-  document.getElementById('page-num').textContent = num;
-  
-  // Update button states
-  document.getElementById('prev-page').disabled = (num <= 1);
-  document.getElementById('next-page').disabled = (num >= pdfDoc.numPages);
 }
 
-// Queue render
-function queueRenderPage(num) {
-  if (pageRendering) {
-    pageNumPending = num;
-  } else {
-    renderPage(num);
-  }
+// Render page function that works for both desktop and mobile
+function renderPage(num, viewer) {
+    const isDesktop = viewer === 'desktop';
+    const currentCanvas = isDesktop ? canvas : mobileCanvas;
+    const currentCtx = isDesktop ? ctx : mobileCtx;
+    const currentScale = isDesktop ? scale : mobileScale;
+    
+    if (!currentCanvas || !currentCtx || !pdfDoc) return;
+
+    if (isDesktop) {
+        pageRendering = true;
+    } else {
+        mobilePageRendering = true;
+    }
+
+    pdfDoc.getPage(num).then(function(page) {
+        const viewport = page.getViewport({scale: currentScale});
+        currentCanvas.height = viewport.height;
+        currentCanvas.width = viewport.width;
+
+        const renderContext = {
+            canvasContext: currentCtx,
+            viewport: viewport
+        };
+        
+        const renderTask = page.render(renderContext);
+        renderTask.promise.then(function() {
+            if (isDesktop) {
+                pageRendering = false;
+                if (pageNumPending !== null) {
+                    renderPage(pageNumPending, 'desktop');
+                    pageNumPending = null;
+                }
+            } else {
+                mobilePageRendering = false;
+                if (mobilePageNumPending !== null) {
+                    renderPage(mobilePageNumPending, 'mobile');
+                    mobilePageNumPending = null;
+                }
+            }
+        });
+    });
+
+    // Update page number display and button states
+    if (isDesktop) {
+        document.getElementById('page-num').textContent = num;
+        document.getElementById('prev-page').disabled = (num <= 1);
+        document.getElementById('next-page').disabled = (num >= pdfDoc.numPages);
+    } else {
+        document.getElementById('mobile-page-num').textContent = num;
+        document.getElementById('mobile-prev-page').disabled = (num <= 1);
+        document.getElementById('mobile-next-page').disabled = (num >= pdfDoc.numPages);
+    }
 }
 
-// Previous page - Back to standard behavior
-document.getElementById('prev-page').addEventListener('click', function() {
-  if (pageNum <= 1) return;
-  pageNum--;
-  queueRenderPage(pageNum);
-});
+// Queue render function
+function queueRenderPage(num, viewer) {
+    const isDesktop = viewer === 'desktop';
+    if (isDesktop) {
+        if (pageRendering) {
+            pageNumPending = num;
+        } else {
+            renderPage(num, 'desktop');
+        }
+    } else {
+        if (mobilePageRendering) {
+            mobilePageNumPending = num;
+        } else {
+            renderPage(num, 'mobile');
+        }
+    }
+}
 
-// Next page - Standard behavior
-document.getElementById('next-page').addEventListener('click', function() {
-  if (pageNum >= pdfDoc.numPages) return;
-  pageNum++;
-  queueRenderPage(pageNum);
-});
+// Desktop controls
+const prevBtn = document.getElementById('prev-page');
+const nextBtn = document.getElementById('next-page');
+
+if (prevBtn) {
+    prevBtn.addEventListener('click', function() {
+        if (pageNum <= 1) return;
+        pageNum--;
+        queueRenderPage(pageNum, 'desktop');
+    });
+}
+
+if (nextBtn) {
+    nextBtn.addEventListener('click', function() {
+        if (pageNum >= pdfDoc.numPages) return;
+        pageNum++;
+        queueRenderPage(pageNum, 'desktop');
+    });
+}
+
+// Mobile controls
+const mobilePrevBtn = document.getElementById('mobile-prev-page');
+const mobileNextBtn = document.getElementById('mobile-next-page');
+
+if (mobilePrevBtn) {
+    mobilePrevBtn.addEventListener('click', function() {
+        if (mobilePageNum <= 1) return;
+        mobilePageNum--;
+        queueRenderPage(mobilePageNum, 'mobile');
+    });
+}
+
+if (mobileNextBtn) {
+    mobileNextBtn.addEventListener('click', function() {
+        if (mobilePageNum >= pdfDoc.numPages) return;
+        mobilePageNum++;
+        queueRenderPage(mobilePageNum, 'mobile');
+    });
+}
 
 // Fullscreen toggle
-document.getElementById('fullscreen-btn').addEventListener('click', function() {
-  const container = document.getElementById('pdf-container');
-  if (container.requestFullscreen) {
-    container.requestFullscreen();
-  }
-});
+const fullscreenBtn = document.getElementById('fullscreen-btn');
+if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', function() {
+        const container = document.getElementById('pdf-container');
+        if (container && container.requestFullscreen) {
+            container.requestFullscreen();
+        }
+    });
+}
 
 // Mobile viewer toggle
-document.getElementById('mobile-viewer-btn').addEventListener('click', function() {
-  const viewer = document.getElementById('mobile-viewer');
-  viewer.style.display = viewer.style.display === 'none' ? 'block' : 'none';
+const mobileViewerBtn = document.getElementById('mobile-viewer-btn');
+if (mobileViewerBtn) {
+    mobileViewerBtn.addEventListener('click', function() {
+        const viewer = document.getElementById('mobile-pdf-viewer');
+        if (viewer.style.display === 'none') {
+            viewer.style.display = 'block';
+            mobileViewerBtn.textContent = 'Hide Interactive Brochure';
+            // Load PDF for mobile if not already loaded
+            if (!pdfDoc) {
+                loadPDF('mobile');
+            } else {
+                renderPage(mobilePageNum, 'mobile');
+            }
+        } else {
+            viewer.style.display = 'none';
+            mobileViewerBtn.textContent = 'View Interactive Brochure';
+        }
+    });
+}
+
+// Keyboard navigation for desktop
+document.addEventListener('keydown', function(e) {
+    // Only work when not in mobile view or when desktop viewer is visible
+    if (window.innerWidth > 768) {
+        if (e.key === 'ArrowLeft' && pageNum > 1) {
+            pageNum--;
+            queueRenderPage(pageNum, 'desktop');
+        } else if (e.key === 'ArrowRight' && pageNum < pdfDoc.numPages) {
+            pageNum++;
+            queueRenderPage(pageNum, 'desktop');
+        }
+    }
 });
 
-// Keyboard navigation - Standard behavior
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'ArrowLeft' && pageNum > 1) {
-    pageNum--;
-    queueRenderPage(pageNum);
-  } else if (e.key === 'ArrowRight' && pageNum < pdfDoc.numPages) {
-    pageNum++;
-    queueRenderPage(pageNum);
-  }
-});
+// Touch swipe support for mobile
+let touchStartX = null;
+let touchStartY = null;
+
+if (mobileCanvas) {
+    mobileCanvas.addEventListener('touchstart', function(e) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+    });
+
+    mobileCanvas.addEventListener('touchend', function(e) {
+        if (!touchStartX || !touchStartY) return;
+
+        const touchEndX = e.changedTouches[0].clientX;
+        const touchEndY = e.changedTouches[0].clientY;
+        const diffX = touchStartX - touchEndX;
+        const diffY = touchStartY - touchEndY;
+
+        // Check if horizontal swipe is more significant than vertical
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+            if (diffX > 0 && mobilePageNum < pdfDoc.numPages) {
+                // Swipe left - next page
+                mobilePageNum++;
+                queueRenderPage(mobilePageNum, 'mobile');
+            } else if (diffX < 0 && mobilePageNum > 1) {
+                // Swipe right - previous page
+                mobilePageNum--;
+                queueRenderPage(mobilePageNum, 'mobile');
+            }
+        }
+
+        touchStartX = null;
+        touchStartY = null;
+    });
+}
 </script>
 
 {% endblock %}
