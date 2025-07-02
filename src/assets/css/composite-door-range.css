@@ -1,0 +1,365 @@
+/*-- -------------------------- -->
+<---           Hero             -->
+<--- -------------------------- -*/
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  #hero-540 {
+    /* 144px - 300px - leaving extra space for the navigation */
+    padding: clamp(9rem, 25.95vw, 18.75em) 1rem 0;
+    /* 130px - 175px */
+    padding-bottom: clamp(8.125rem, 12.5vw, 10.9375em);
+    /* prevents padding and border from affecting height and width */
+    box-sizing: border-box;
+    /* clips the color overlay so it doesn't cause an overflow */
+    overflow: hidden;
+    position: relative;
+  }
+  #hero-540 .cs-container {
+    width: 100%;
+    max-width: 80rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    /* 48px - 64px */
+    gap: clamp(3rem, 6vw, 4rem);
+  }
+  #hero-540 .cs-content {
+    text-align: left;
+    /* changed to at tablet */
+    width: 90%;
+    max-width: 34.0625rem;
+    /* 100px - 150px, changes to 0 at tablet */
+    margin-top: clamp(6.25rem, 28vw, 9.375rem);
+  }
+  #hero-540 .cs-title {
+    /* 39px - 61px */
+    font-size: clamp(2.4375rem, 6.7vw, 3.8125rem);
+    font-weight: 900;
+    line-height: 1.2em;
+    text-align: inherit;
+    max-width: 43.75rem;
+    /* 16px - 32px */
+    margin: 0 0 clamp(1rem, 4vw, 2rem) 0;
+    color: var(--bodyTextColorWhite);
+    position: relative;
+  }
+  #hero-540 .cs-text {
+    font-size: var(--bodyFontSize);
+    line-height: 1.5em;
+    text-align: inherit;
+    width: 100%;
+    max-width: 40.625rem;
+    /* 40px - 64px */
+    margin: 0 0 clamp(2.5rem, 6.3vw, 4rem);
+    color: var(--bodyTextColorWhite);
+  }
+  #hero-540 .cs-button-solid {
+    font-size: 1rem;
+    /* 46px - 56px */
+    line-height: clamp(2.875rem, 5.5vw, 3.5rem);
+    text-decoration: none;
+    font-weight: 700;
+    text-align: center;
+    margin: auto;
+    color: #1a1a1a;
+    min-width: 9.375rem;
+    padding: 0 1.5rem;
+    background-color: var(--secondary);
+    border-radius: 0.25rem;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    /* prevents padding from adding to the width */
+    box-sizing: border-box;
+    transition: color 0.3s;
+  }
+  #hero-540 .cs-button-solid:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 0%;
+    background: #000;
+    opacity: 1;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 0.25rem;
+    transition: width 0.3s;
+  }
+  #hero-540 .cs-button-solid:hover {
+    color: #fff;
+  }
+  #hero-540 .cs-button-solid:hover:before {
+    width: 100%;
+  }
+  #hero-540 .cs-background {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  #hero-540 .cs-background:before {
+    /* background color overlay */
+    content: "";
+    position: absolute;
+    display: block;
+    height: 125rem;
+    width: 187.5rem;
+    background: rgba(12, 12, 12, 0.7);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    top: -38.125rem;
+    left: 50%;
+    z-index: 1;
+    transform: rotate(-30deg) translateX(-50%);
+  }
+  #hero-540 .cs-background img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    /* Makes img tag act as a background image */
+    object-fit: cover;
+  }
+}
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+  #hero-540 .cs-container {
+    align-items: flex-end;
+  }
+  #hero-540 .cs-content {
+    width: 48%;
+    margin-top: 0rem;
+  }
+  #hero-540 .cs-background:before {
+    top: -76.25rem;
+    transform: rotate(-55deg) translateX(-50%);
+  }
+}
+/*-- -------------------------- -->
+<---       PDF Brochure        -->
+<--- -------------------------- -*/
+.cs-brochure {
+  padding: 4rem 0;
+  background: #fff;
+}
+.cs-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.cs-pdf-desktop {
+  display: block;
+}
+.cs-pdf-mobile {
+  display: none;
+}
+.cs-pdf-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.cs-pdf-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 2rem;
+  font-weight: 700;
+}
+.cs-pdf-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.cs-pdf-viewer {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f5f5f5;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.cs-pdf-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+.cs-control-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+.cs-control-btn:hover {
+  background: #c82333;
+}
+.cs-control-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+.cs-page-info {
+  font-weight: bold;
+  color: #333;
+  font-size: 1rem;
+}
+.cs-pdf-canvas-container {
+  text-align: center;
+  padding: 2rem;
+  min-height: 600px;
+  position: relative;
+  background: white;
+}
+#pdf-canvas {
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+.cs-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.1rem;
+  color: #666;
+  font-weight: 500;
+}
+/* Button Styles */
+.cs-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.cs-btn-primary {
+  background: #dc3545;
+  color: white;
+}
+.cs-btn-primary:hover {
+  background: #c82333;
+  color: white;
+  text-decoration: none;
+}
+.cs-btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+.cs-btn-secondary:hover {
+  background: #5a6268;
+  color: white;
+  text-decoration: none;
+}
+.cs-cta-section {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+.cs-cta-section h3 {
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.cs-cta-section p {
+  margin-bottom: 1.5rem;
+  color: #666;
+  font-size: 1.1rem;
+}
+.cs-cta-section .cs-btn {
+  margin: 0 0.5rem 0.5rem 0;
+}
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .cs-brochure {
+    padding: 2rem 0;
+  }
+  .cs-pdf-desktop {
+    display: none;
+  }
+  .cs-pdf-mobile {
+    display: block;
+  }
+  .cs-mobile-notice {
+    text-align: center;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+  }
+  .cs-mobile-notice h3 {
+    margin-bottom: 1rem;
+    color: #333;
+    font-size: 1.5rem;
+  }
+  .cs-mobile-notice p {
+    margin-bottom: 1.5rem;
+    color: #666;
+  }
+  .cs-mobile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .cs-pdf-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  .cs-pdf-header h2 {
+    font-size: 1.5rem;
+  }
+  .cs-pdf-controls {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  .cs-control-btn {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+  .cs-cta-section .cs-btn {
+    display: block;
+    margin: 0.5rem 0;
+    width: 100%;
+    max-width: 300px;
+  }
+  .cs-pdf-canvas-container {
+    padding: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  .cs-pdf-header h2 {
+    font-size: 1.3rem;
+  }
+  .cs-pdf-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+  .cs-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
