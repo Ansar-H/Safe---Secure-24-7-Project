@@ -47,7 +47,7 @@ eleventyNavigation:
           <button id="fullscreen-btn" class="cs-btn cs-btn-secondary">
             View Fullscreen
           </button>
-          <a href="/assets/pdfs/composite-doors-brochure.pdf" download class="cs-btn cs-btn-primary">
+          <a href="/assets/pdfs/composite-doors-brochure2.pdf" download class="cs-btn cs-btn-primary">
             Download PDF
           </a>
         </div>
@@ -75,7 +75,7 @@ eleventyNavigation:
         <h3>View Our Door Collection</h3>
         <p>For the best experience viewing our 90-page brochure, please download the PDF or view on a larger screen.</p>
         <div class="cs-mobile-actions">
-          <a href="/assets/pdfs/composite-doors-brochure.pdf" class="cs-btn cs-btn-primary">
+          <a href="/assets/pdfs/composite-doors-brochure2.pdf" class="cs-btn cs-btn-primary">
             Download Brochure
           </a>
           <button id="mobile-viewer-btn" class="cs-btn cs-btn-secondary">
@@ -87,7 +87,7 @@ eleventyNavigation:
       <!-- Simple mobile viewer -->
       <div class="cs-mobile-viewer" id="mobile-viewer" style="display: none;">
         <iframe 
-          src="/assets/pdfs/composite-doors-brochure.pdf"
+          src="/assets/pdfs/composite-doors-brochure2.pdf"
           width="100%"
           height="600px"
           style="border: none;">
@@ -117,7 +117,7 @@ const canvas = document.getElementById('pdf-canvas');
 const ctx = canvas.getContext('2d');
 
 // Load PDF - Updated path for the new PDF
-pdfjsLib.getDocument('/assets/pdfs/composite-doors-brochure.pdf').promise.then(function(pdfDoc_) {
+pdfjsLib.getDocument('/assets/pdfs/composite-doors-brochure2.pdf').promise.then(function(pdfDoc_) {
   pdfDoc = pdfDoc_;
   // Show actual page count (should be 90)
   document.getElementById('page-count').textContent = pdfDoc.numPages;
