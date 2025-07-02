@@ -73,13 +73,13 @@ eleventyNavigation:
     <div class="cs-pdf-mobile">
       <div class="cs-mobile-notice">
         <h3>View Our Door Collection</h3>
-        <p>Browse through our 90-page brochure with easy page navigation optimized for mobile.</p>
+        <p>Browse through our 90-page brochure.</p>
         <div class="cs-mobile-actions">
           <a href="/assets/pdfs/composite-doors-brochure2.pdf" class="cs-btn cs-btn-primary">
             Download Brochure
           </a>
           <button id="mobile-viewer-btn" class="cs-btn cs-btn-secondary">
-            View Interactive Brochure
+            View Brochure
           </button>
         </div>
       </div>
@@ -150,7 +150,10 @@ function loadPDF(viewer) {
             renderPage(pageNum, 'desktop');
         } else if (viewer === 'mobile') {
             document.getElementById('mobile-page-count').textContent = pdfDoc.numPages;
-            document.getElementById('mobile-loading').style.display = 'none';
+            const mobileLoading = document.getElementById('mobile-loading');
+            if (mobileLoading) {
+                mobileLoading.style.display = 'none';
+            }
             renderPage(mobilePageNum, 'mobile');
         }
     }).catch(function(error) {
@@ -293,13 +296,25 @@ const mobileViewerBtn = document.getElementById('mobile-viewer-btn');
 if (mobileViewerBtn) {
     mobileViewerBtn.addEventListener('click', function() {
         const viewer = document.getElementById('mobile-pdf-viewer');
+        const mobileLoading = document.getElementById('mobile-loading');
+        
         if (viewer.style.display === 'none') {
             viewer.style.display = 'block';
             mobileViewerBtn.textContent = 'Hide Interactive Brochure';
+            
             // Load PDF for mobile if not already loaded
             if (!pdfDoc) {
+                // Show loading text when starting to load
+                if (mobileLoading) {
+                    mobileLoading.style.display = 'block';
+                    mobileLoading.textContent = 'Loading brochure...';
+                }
                 loadPDF('mobile');
             } else {
+                // PDF already loaded, hide loading and render page
+                if (mobileLoading) {
+                    mobileLoading.style.display = 'none';
+                }
                 renderPage(mobilePageNum, 'mobile');
             }
         } else {
